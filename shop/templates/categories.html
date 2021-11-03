@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title> {{ title }}</title>
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.css' %}" rel="stylesheet"
+      type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/categories.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/categories_responsive.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Products -->
+
+<div class="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- Sidebar Left -->
+
+                <div class="sidebar_left clearfix">
+
+                    <!-- Categories -->
+                    <div class="sidebar_section">
+                        <div class="sidebar_title">Categories</div>
+                        <div class="sidebar_section_content">
+                            <ul>
+                                {% for cat in categories %}
+                                <li><a href="/{{ cat }}">{{ cat }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-12">
+                <div class="product_sorting clearfix">
+                    <div class="view">
+                        <div class="view_box box_view"><i class="fa fa-th-large" aria-hidden="true"></i></div>
+                        <div class="view_box detail_view"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="sorting">
+                        <ul class="item_sorting">
+                            <li>
+                                <span class="sorting_text">Show all</span>
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                <ul>
+                                    <li class="product_sorting_btn"
+                                        data-isotope-option='{ "sortBy": "original-order" }'><span>Show All</span></li>
+                                    <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span>
+                                    </li>
+                                    <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'><span>Stars</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="sorting_text">Show</span>
+                                <span class="num_sorting_text">12</span>
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                <ul>
+                                    <li class="num_sorting_btn"><span>3</span></li>
+                                    <li class="num_sorting_btn"><span>6</span></li>
+                                    <li class="num_sorting_btn"><span>12</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row products_container">
+            <div class="col">
+
+                <!-- Products -->
+
+                <div class="product_grid">
+
+                    <!-- Product -->
+                    {% for item in items %}
+                    <div class="product">
+                        <div class="product_image"><img src="{{ item.photo.url }}" alt=""></div>
+                        <div class="rating rating_4" data-rating="4">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product_content clearfix">
+                            <div class="product_info">
+                                <div class="product_name"><a href="{{item.get_absolute_url}}">{{ item.title }}</a></div>
+                                <div class="product_price">{{ item.price }}$</div>
+                            </div>
+                            <div class="product_options">
+                                <div class="product_buy product_option"><img
+                                        src="{% static 'images/shopping-bag-white.svg' %}" alt=""></div>
+                                <div class="product_fav product_option">+</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row page_num_container">
+            <div class="col text-right">
+                <ul class="page_nums">
+                    <li><a href="#">01</a></li>
+                    <li class="active"><a href="#">02</a></li>
+                    <li><a href="#">03</a></li>
+                    <li><a href="#">04</a></li>
+                    <li><a href="#">05</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Sidebar Right -->
+
+    <div class="sidebar_right clearfix">
+
+        <!-- Promo 1 -->
+        <div class="sidebar_promo_1 sidebar_promo d-flex flex-column align-items-center justify-content-center">
+            <div class="sidebar_promo_image" style="background-image: url(images/sidebar_promo_1.jpg)"></div>
+            <div class="sidebar_promo_content text-center">
+                <div class="sidebar_promo_title">30%<span>off</span></div>
+                <div class="sidebar_promo_subtitle">On all shoes</div>
+                <div class="sidebar_promo_button"><a href="checkout.html">check out</a></div>
+            </div>
+        </div>
+
+        <!-- Promo 2 -->
+        <div class="sidebar_promo_2 sidebar_promo">
+            <div class="sidebar_promo_image" style="background-image: url(images/sidebar_promo_2.jpg)"></div>
+            <div class="sidebar_promo_content text-center">
+                <div class="sidebar_promo_title">30%<span>off</span></div>
+                <div class="sidebar_promo_subtitle">On all shoes</div>
+                <div class="sidebar_promo_button"><a href="checkout.html">check out</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

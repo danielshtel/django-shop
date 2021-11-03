@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block title %}
+    <title> {{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product_responsive.css' %}">
+    {{ title }}
+    {% endblock %}
+
+
+{% block content %}
+<!-- Product -->
+
+<div class="product">
+        <div class="row product_row">
+
+            <!-- Product Image -->
+            <div class="col-lg-7">
+                <div class="product_image">
+                    <div class="product_image_large"><img src="{{product.photo.url}}" alt=""></div>
+                </div>
+            </div>
+
+            <!-- Product Content -->
+            <div class="col-lg-5">
+                <div class="product_content">
+                    <div class="product_name">{{ product.title }}</div>
+                    <div class="product_price">{{product.price}}$</div>
+                    <div class="rating rating_4" data-rating="4">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <!-- In Stock -->
+                    {% if product.available %}
+                    <div class="in_stock_container">
+                        <div class="in_stock in_stock_true"></div>
+                    </div>
+                    <div class="product_text">
+                        <p>{{product.description}}</p>
+                    </div>
+                    {% else %}
+                    <div class="in_stock_container">
+                        <div class="in_stock in_stock_false"></div>
+                    </div>
+                    <div class="product_text">
+                        <p>{{product.description}}</p>
+                    </div>
+                    {% endif %}
+
+
+                    <!-- Product Size -->
+                    <div class="product_size_container">
+                        <span>Size</span>
+                        <div class="product_size">
+                            <ul class="d-flex flex-row align-items-start justify-content-start">
+                                <li>
+                                    <input type="radio" id="radio_1" name="product_radio" class="regular_radio radio_1">
+                                    <label for="radio_1">{{product.size}}</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="button cart_button"><a href="#">add to cart</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
