@@ -817,6 +817,13 @@ section
 	margin-top: 9px;
 	color: #8a8a8a;
 }
+.product_category
+{
+	font-size: 28px;
+	font-weight: 600;
+	color: #708090;
+	line-height: 0.75;
+}
 .rating
 {
 	margin-top: 9px;
