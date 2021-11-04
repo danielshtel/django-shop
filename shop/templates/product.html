@@ -27,7 +27,6 @@
                 <div class="product_content">
                     <div class="product_name">{{ product.title }}</div>
                     <div class="product_price">{{product.price}}$</div>
-                    <div class="product_category">{{product.category}}</div>
                     <div class="rating rating_4" data-rating="4">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -35,6 +34,7 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                     </div>
+                    <div class="product_category">Category: {{product.category}}</div>
                     <!-- In Stock -->
                     {% if product.available %}
                     <div class="in_stock_container">

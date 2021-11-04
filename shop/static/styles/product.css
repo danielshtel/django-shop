@@ -86,10 +86,10 @@ ul
 p
 {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 14px;
+	font-size: 18px;
+    font-weight: 300;
 	line-height: 2;
-	font-weight: 400;
-	color: #929191;
+	color: #232323;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
@@ -815,13 +815,14 @@ section
 	font-size: 24px;
 	font-weight: 600;
 	margin-top: 9px;
-	color: #8a8a8a;
+	color: #232323;
 }
 .product_category
 {
-	font-size: 28px;
-	font-weight: 600;
-	color: #708090;
+	font-size: 24px;
+	font-weight: 300;
+	margin-top: 9px;
+	color: #232323;
 	line-height: 0.75;
 }
 .rating
@@ -898,7 +899,7 @@ section
 }
 .product_text
 {
-	margin-top: 56px;
+	margin-top: 10px;
 }
 .product_text p:last-of-type
 {
