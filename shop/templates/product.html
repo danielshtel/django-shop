@@ -61,8 +61,8 @@
                             <ul class="d-flex flex-row align-items-start justify-content-start">
                                 {% for s in size %}
                                 <li>
-                                    <input type="radio" id="radio_1" name="product_radio" class="regular_radio radio_1">
-                                    <label for="radio_1">{{s}}</label>
+                                    <input type="radio" id="radio_{{s.id}}" name="product_radio" class="regular_radio radio_{{s.id}}">
+                                    <label for="radio_{{s.id}}">{{s}}</label>
                                 </li>
                                 {% endfor %}
                             </ul>
