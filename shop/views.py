@@ -29,7 +29,9 @@ def show_categories(request):
 
 def product_detail(request, id, slug):
     sneaker = get_object_or_404(Sneaker, id=id, slug=slug)
+    size = sneaker.size.all()
     context = {'product': sneaker,
-               'title': sneaker.title}
+               'title': sneaker.title,
+               'size': size}
     # available=True)
     return render(request, template_name='product.html', context=context)

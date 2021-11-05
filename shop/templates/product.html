@@ -34,10 +34,11 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                     </div>
-                    <div class="product_category">Category: {{product.category}}</div>
+                    <div class="product_category">Fashion: {{product.category}}</div>
                     <!-- In Stock -->
                     {% if product.available %}
                     <div class="in_stock_container">
+                        <p>In stock:</p>
                         <div class="in_stock in_stock_true"></div>
                     </div>
                     <div class="product_text">
@@ -58,12 +59,15 @@
                         <span>Size</span>
                         <div class="product_size">
                             <ul class="d-flex flex-row align-items-start justify-content-start">
+                                {% for s in size %}
                                 <li>
                                     <input type="radio" id="radio_1" name="product_radio" class="regular_radio radio_1">
-                                    <label for="radio_1">{{product.size}}</label>
+                                    <label for="radio_1">{{s}}</label>
                                 </li>
+                                {% endfor %}
                             </ul>
                         </div>
+
                         <div class="button cart_button"><a href="#">add to cart</a></div>
                     </div>
                 </div>
