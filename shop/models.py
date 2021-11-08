@@ -1,6 +1,7 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 
 
 class Size(models.Model):
@@ -16,7 +17,7 @@ class Size(models.Model):
 
 class Sneaker(models.Model):
     title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=200, db_index=True, unique=True)
+    slug = models.SlugField(db_index=True, max_length=50, unique=True, editable=False)
     color = models.CharField(max_length=50)
     size = models.ManyToManyField(Size)
     category = models.ForeignKey('Category', on_delete=models.PROTECT)
@@ -28,9 +29,13 @@ class Sneaker(models.Model):
     stock = models.PositiveIntegerField()
     available = models.BooleanField(default=True)
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Sneaker, self).save(*args, **kwargs)
+
     def get_absolute_url(self):
         return reverse('product_detail',
-                       args=[self.id, self.slug])
+                       args=[self.pk, self.slug])
 
     def __str__(self):
         return self.title
@@ -42,7 +47,11 @@ class Sneaker(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=10, db_index=True, verbose_name='Категория')
-    slug = models.SlugField(max_length=200, db_index=True, unique=True)
+    slug = models.SlugField(db_index=True, max_length=50, unique=True, editable=False)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

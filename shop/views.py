@@ -1,37 +1,38 @@
 from django.shortcuts import render, get_object_or_404
 
 from shop.models import Category, Sneaker
+from django.views.generic import ListView, DetailView
 
 
-def index(request):
-    return render(request, 'index.html', {'title': 'HypeBeast'})
+class HomeShop(ListView):
+    template_name = 'index.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'HypeBeast'
+        return context
+
+    def get_queryset(self):
+        pass
 
 
-def show_categories(request):
-    return render(request, 'categories.html', {'categories': Category.objects.all(),
-                                               'title': 'HypeBeast', 'items': Sneaker.objects.all()})
+class CategoryShop(ListView):
+    template_name = 'categories.html'
+    model = Sneaker
+    context_object_name = 'sneakers'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        context['title'] = 'HypeBeast'
+        return context
+
+    def get_queryset(self):
+        return Sneaker.objects.filter(available=True)
 
 
-# def product(request, category_slug=None):
-#     category = None
-#     categories = Category.objects.all()
-#     products = Sneaker.objects.filter(available=True)
-#     if category_slug:
-#         category = get_object_or_404(Category, slug=category_slug)
-#         products = products.filter(category=category)
-#     return render(request,
-#                   'shop/product/list.html',
-#                   {'category': category,
-#                    'categories': categories,
-#                    'products': products,
-#                    'title': 'HypeBeast'})
+class ProductDetailView(DetailView):
+    template_name = 'product.html'
+    model = Sneaker
+    context_object_name = 'product'
 
-
-def product_detail(request, id, slug):
-    sneaker = get_object_or_404(Sneaker, id=id, slug=slug)
-    size = sneaker.size.all()
-    context = {'product': sneaker,
-               'title': sneaker.title,
-               'size': size}
-    # available=True)
-    return render(request, template_name='product.html', context=context)

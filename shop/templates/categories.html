@@ -20,10 +20,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="product_sorting clearfix">
-                    <div class="view">
-                        <div class="view_box box_view"><i class="fa fa-th-large" aria-hidden="true"></i></div>
-                        <div class="view_box detail_view"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                    </div>
                     <div class="sorting">
                         <ul class="item_sorting">
                             <li>
@@ -62,7 +58,7 @@
                 <div class="product_grid">
 
                     <!-- Product -->
-                    {% for item in items %}
+                    {% for item in sneakers %}
                     <div class="product">
                         <div class="product_image"><img src="{{ item.photo.url }}" alt=""></div>
                         <div class="rating rating_4" data-rating="4">
@@ -104,31 +100,31 @@
 
     </div>
 
-    <!-- Sidebar Right -->
+<!--    &lt;!&ndash; Sidebar Right &ndash;&gt;-->
 
-    <div class="sidebar_right clearfix">
+<!--    <div class="sidebar_right clearfix">-->
 
-        <!-- Promo 1 -->
-        <div class="sidebar_promo_1 sidebar_promo d-flex flex-column align-items-center justify-content-center">
-            <div class="sidebar_promo_image" style="background-image: url(images/sidebar_promo_1.jpg)"></div>
-            <div class="sidebar_promo_content text-center">
-                <div class="sidebar_promo_title">30%<span>off</span></div>
-                <div class="sidebar_promo_subtitle">On all shoes</div>
-                <div class="sidebar_promo_button"><a href="checkout.html">check out</a></div>
-            </div>
-        </div>
+<!--        &lt;!&ndash; Promo 1 &ndash;&gt;-->
+<!--        <div class="sidebar_promo_1 sidebar_promo d-flex flex-column align-items-center justify-content-center">-->
+<!--            <div class="sidebar_promo_image" style="background-image: url(images/sidebar_promo_1.jpg)"></div>-->
+<!--            <div class="sidebar_promo_content text-center">-->
+<!--                <div class="sidebar_promo_title">30%<span>off</span></div>-->
+<!--                <div class="sidebar_promo_subtitle">On all shoes</div>-->
+<!--                <div class="sidebar_promo_button"><a href="checkout.html">check out</a></div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <!-- Promo 2 -->
-        <div class="sidebar_promo_2 sidebar_promo">
-            <div class="sidebar_promo_image" style="background-image: url(images/sidebar_promo_2.jpg)"></div>
-            <div class="sidebar_promo_content text-center">
-                <div class="sidebar_promo_title">30%<span>off</span></div>
-                <div class="sidebar_promo_subtitle">On all shoes</div>
-                <div class="sidebar_promo_button"><a href="checkout.html">check out</a></div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--        &lt;!&ndash; Promo 2 &ndash;&gt;-->
+<!--        <div class="sidebar_promo_2 sidebar_promo">-->
+<!--            <div class="sidebar_promo_image" style="background-image: url(images/sidebar_promo_2.jpg)"></div>-->
+<!--            <div class="sidebar_promo_content text-center">-->
+<!--                <div class="sidebar_promo_title">30%<span>off</span></div>-->
+<!--                <div class="sidebar_promo_subtitle">On all shoes</div>-->
+<!--                <div class="sidebar_promo_button"><a href="checkout.html">check out</a></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 {% endblock %}

@@ -59,10 +59,10 @@
                         <span>Size</span>
                         <div class="product_size">
                             <ul class="d-flex flex-row align-items-start justify-content-start">
-                                {% for s in size %}
+                                {% for size in product.size.all %}
                                 <li>
-                                    <input type="radio" id="radio_{{s.id}}" name="product_radio" class="regular_radio radio_{{s.id}}">
-                                    <label for="radio_{{s.id}}">{{s}}</label>
+                                    <input type="radio" id="radio_{{size.id}}" name="product_radio" class="regular_radio radio_{{size.id}}">
+                                    <label for="radio_{{size.id}}">{{size}}</label>
                                 </li>
                                 {% endfor %}
                             </ul>
