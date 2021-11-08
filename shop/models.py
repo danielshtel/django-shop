@@ -35,7 +35,7 @@ class Sneaker(models.Model):
 
     def get_absolute_url(self):
         return reverse('product_detail',
-                       args=[self.pk, self.slug])
+                       kwargs={'pk': self.pk, 'slug': self.slug})
 
     def __str__(self):
         return self.title
@@ -59,5 +59,3 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
-
-

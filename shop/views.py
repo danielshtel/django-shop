@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.http import Http404
+from django.views.generic import ListView, DetailView
 
 from shop.models import Category, Sneaker
-from django.views.generic import ListView, DetailView
 
 
 class HomeShop(ListView):
@@ -36,3 +36,8 @@ class ProductDetailView(DetailView):
     model = Sneaker
     context_object_name = 'product'
 
+    def get_object(self, queryset=None):
+        try:
+            return Sneaker.objects.get(pk=self.kwargs.get('pk'), slug=self.kwargs.get('slug'))
+        except Sneaker.DoesNotExist:
+            raise Http404()
